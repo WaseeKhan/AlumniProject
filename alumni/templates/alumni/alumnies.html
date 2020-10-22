@@ -1,0 +1,36 @@
+{% extends 'alumni/base.html' %}
+
+{% block content %}
+<h1>Welcome to alumni Portal</h1>
+
+
+
+<div class="row" style="width:100%;">
+    <div class="col-md-12">
+    <h5>Total Registered Alumni: {{total}}</h5>
+    <hr>
+    <div class="card card-body">
+
+        <table class="table table-sm">
+            <tr>
+                <th>Name</th>
+                <th>batch</th>
+                <th>Current status</th>
+                <th>Current address</th>
+            </tr>
+                {% for i in alumni %}
+            <tr>
+                <td><a href="{% url 'profile' i.id%}">{{i.name}}</a></td>
+                <td>{{i.batch}}</td>
+                <td>{{i.profession}}</td>
+                <td>{{i.location}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+</div>
+
+
+{% endblock %}

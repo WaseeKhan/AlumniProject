@@ -1,0 +1,116 @@
+{% extends 'alumni/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid p-4 my-2 border">
+  <div class="row">
+
+    <div class="col p-2 my-2 border">
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              {% for slider_item in slider_items%}
+              <ol class="carousel-indicators">
+
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{slider_item.id}}" class="{% if forloop.first %}active{% endif %}"></li>
+              </ol>
+             {% endfor %}
+              <div class="carousel-inner">
+                  {% for slider_item in slider_items%}
+                  <div class="carousel-item {% if forloop.first %} active{% endif %}">
+
+                  <img class="d-block w-100" src="{{slider_item.image.url}}" alt="{{slider_item.name}}">
+                  <div class="carousel-caption d-none d-md-block">
+                     <h5>{{slider_item.title}}</h5>
+                     <p>{{slider_item.desc}}</p>
+
+                </div>
+                </div>
+                  {% endfor %}
+              </div>
+
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+              </div>
+
+    </div>
+
+
+
+    <div class="col p-2 my-2 border">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+
+                <div class="card">
+        <h5 class="card-header" style="text-align:center;"> Links</h5>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+                <button type="button" class="btn btn-outline-primary">Primary</button><br>
+                <button type="button" class="btn btn-outline-secondary">Secondary</button><br>
+                <button type="button" class="btn btn-outline-success">Success</button><br>
+                <button type="button" class="btn btn-outline-info">Info</button><br>
+                <button type="button" class="btn btn-outline-dark">Dark</button>
+              </div>
+              </div>
+              </div>
+              <div class="card">
+                    <h5 class="card-header" style="text-align:center;">News & Updates</h5>
+                  <div class="card-body">
+                    <h5 class="card-title"></h5>
+
+                            <marquee behavior="scroll" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+                                {% for item in news%}
+                            <p class="card-text">{{item.title}} {{item.date}} <a href="{{item.link}}">Read More</a> <img src="{{item.src.url}}" style="height:10px;"></p>
+                                {% endfor %}
+                            </marquee>
+
+      </div>
+    </div>
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+    <div class="row">
+        <div class="col p-2 my-2 border">
+            <div class="card">
+                    <h5 class="card-header" style="text-align:center;background: #ffd1f4;">Notable Principles </h5>
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                    </div>
+            </div>
+        </div>
+        <div class="col p-2 my-2 border">
+                <div class="card">
+                    <h5 class="card-header" style="text-align:center;background: #ffd1f4;">Notable Alumni</h5>
+                    <div class="card-body">
+                    <h5 class="card-title"></h5>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col p-2 my-2 border">
+        <img src="">
+    </div>
+
+
+</div>
+  </div>
+
+
+
+
+
+</div>
+
+{% endblock %}

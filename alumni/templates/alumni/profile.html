@@ -1,0 +1,249 @@
+
+{% extends 'alumni/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container main-secction">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+                {% for i in alumni %}
+                <img src="{{i.dp.url}}">
+                {% endfor %}
+            </div>
+            <div class="row user-left-part">
+                <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+                    <div class="row ">
+                        <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+
+                            {% for i in alumni %}
+                            <img src="{{i.dp.url}}" class="rounded-circle">
+
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+                            <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact" class="btn btn-success btn-block follow">Contact</button>
+                            <button class="btn btn-warning btn-block">Friends</button>
+                        </div>
+                        <div class="row user-detail-row">
+                            <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+
+                                <div class="border"></div>
+
+	                        <div class="col-md-12">
+
+                    <ul class="social-network social-circle">
+
+                        <li><a href="{{i.icoInsta}}" class="icoRss" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <br><br>
+                        <li><a href="#" class="icoTwitter" title="Skype"><i class="fa fa-skype"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="GitHub"><i class="fa fa-github"></i></a></li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                                <br>
+                        <i class="fa fa-map-marker" style="font-size:30px"></i>
+                                {% for i in alumni %}
+                                <span style="margin-left:20px;color:green;">{{i.location}}</span><br><br>
+                                <p style="margin-left:20px;color:black;font-size:12px;"> Joined on : {{i.portal_join_date.date}}</p>
+                                {% endfor%}
+                     </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+                    <div class="row profile-right-section-row">
+                        <div class="col-md-12 profile-header">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                                    {% for i in alumni %}
+                                    <h1>{{i.name}}</h1>
+                                    <h5>{{i.profession}}</h5>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
+                                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                  <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i class="fa fa-user"></i> Profile </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" href="#buzz" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i> Timeline</a>
+                                                </li>
+                                              </ul>
+
+                                              <!-- Tab panes -->
+                                              <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                                                        <div class="row">
+                                                                <div class="col-md-2">
+                                                                    {% for i in alumni %}
+                                                                    <label>PID</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{i.id}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Batch</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{i.batch}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Email</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{i.email}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Contact</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{i.phone}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-2">
+                                                                    <label>Profession</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>{{i.profession}}</p>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="buzz">
+                                                        <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>Experience</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>Expert</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>Hourly Rate</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>10$/hr</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>Total Projects</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>230</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>English Level</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>Expert</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label>Availability</label>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p>6 months</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <label>Your Bio</label>
+                                                                    <br/>
+                                                                    <p>Your detail description</p>
+                                                                </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                </div>
+
+                                              </div>
+
+                                </div>
+                                <div class="col-md-4 img-main-rightPart">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row image-right-part">
+                                                <div class="col-md-6 pull-left image-right-detail">
+                                                    <h6>Status</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            <div class="col-md-12 image-right">
+                                            {% for i in alumni %}
+                                            <img src="{{i.dp.url}}">
+                                                {% endfor %}
+                                            </div>
+
+                                        <div class="col-md-12 image-right-detail-section2">
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contact">Leave a Messege</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p for="msj">Do You want to reach out to me?</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFullname">You Name</label>
+                        <input type="text" id="txtFullname" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Email</label>
+                        <input type="text" id="txtEmail" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPhone">Mobile No</label>
+                        <input type="text" id="txtPhone" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)="openModal()" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
